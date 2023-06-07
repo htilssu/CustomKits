@@ -28,49 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            userControlKits1 = new Kits.UserControlKits();
+            panelKits1 = new Kits.PanelKits();
             buttonKits1 = new Kits.ButtonKits();
             SuspendLayout();
             // 
-            // userControlKits1
+            // panelKits1
             // 
-            userControlKits1.BackColor = Color.Black;
-            userControlKits1.BorderColor = SystemColors.ControlLightLight;
-            userControlKits1.BorderRadius = 50;
-            userControlKits1.BorderWidth = 2F;
-            userControlKits1.Fill = true;
-            userControlKits1.HoverColor = Color.Empty;
-            userControlKits1.Location = new Point(289, 176);
-            userControlKits1.Name = "userControlKits1";
-            userControlKits1.Size = new Size(303, 116);
-            userControlKits1.TabIndex = 0;
+            panelKits1.BackColor = SystemColors.HighlightText;
+            panelKits1.BorderColor = Color.Transparent;
+            panelKits1.BorderRadius = 49F;
+            panelKits1.BorderWidth = 0F;
+            panelKits1.Location = new Point(252, 176);
+            panelKits1.MinimumSize = new Size(200, 50);
+            panelKits1.Name = "panelKits1";
+            panelKits1.Size = new Size(250, 90);
+            panelKits1.TabIndex = 0;
             // 
             // buttonKits1
             // 
             buttonKits1.BackColor = Color.FromArgb(91, 137, 255);
-            buttonKits1.BorderColor = Color.Black;
-            buttonKits1.BorderRadius = 50;
-            buttonKits1.BorderWidth = 2F;
+            buttonKits1.BorderColor = Color.Empty;
+            buttonKits1.BorderRadius = 0;
+            buttonKits1.BorderWidth = 0F;
             buttonKits1.Fill = true;
             buttonKits1.FlatAppearance.BorderSize = 0;
             buttonKits1.FlatStyle = FlatStyle.Flat;
-            buttonKits1.HoverColor = Color.Empty;
-            buttonKits1.Location = new Point(446, 75);
+            buttonKits1.HoverColor = Color.Yellow;
+            buttonKits1.Location = new Point(347, 76);
             buttonKits1.MinimumSize = new Size(200, 50);
             buttonKits1.Name = "buttonKits1";
-            buttonKits1.Size = new Size(296, 75);
+            buttonKits1.Size = new Size(229, 89);
             buttonKits1.TabIndex = 1;
             buttonKits1.Text = "buttonKits1";
             buttonKits1.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(882, 500);
+            ClientSize = new Size(706, 400);
             Controls.Add(buttonKits1);
-            Controls.Add(userControlKits1);
+            Controls.Add(panelKits1);
+            Margin = new Padding(2);
             Name = "Form1";
             Text = "2";
             Paint += Painting;
@@ -79,7 +79,7 @@
 
         #endregion
 
-        private Kits.UserControlKits userControlKits1;
+        private Kits.PanelKits panelKits1;
         private Kits.ButtonKits buttonKits1;
     }
 }

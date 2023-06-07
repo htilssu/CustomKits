@@ -44,17 +44,20 @@ namespace CustomKits.Kits
             }
         }
 
-
         [Category("Hisu")]
         public int BorderRadius
         {
             get => borderRadius; set
             {
-                if (value < this.Width)
+                if (value < this.Height)
                 {
                     borderRadius = value;
-                    Invalidate();
                 }
+                else
+                {
+                    borderRadius = this.Height - 1;
+                }
+                Invalidate();
 
             }
         }
@@ -97,7 +100,7 @@ namespace CustomKits.Kits
             }
         }
 
-     
+
 
 
 
@@ -107,13 +110,13 @@ namespace CustomKits.Kits
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
             RectangleF rectSurface = new RectangleF(0, 0, this.Width, this.Height);
-            RectangleF rectBorder = new RectangleF(1, 1, this.Width-1 , this.Height-1);
+            RectangleF rectBorder = new RectangleF(1, 1, this.Width - 1, this.Height - 1);
 
             if (BorderRadius > 2)
             {
 
                 using (GraphicsPath pathSurface = Graphic.GetPath(rectSurface, BorderRadius))
-                using (GraphicsPath pathBorder = Graphic.GetPath(rectBorder, BorderRadius-1))
+                using (GraphicsPath pathBorder = Graphic.GetPath(rectBorder, BorderRadius - 1))
                 using (Pen penSurface = new Pen(this.Parent.BackColor, 4))
                 using (Pen penBorder = new Pen(BorderColor, BorderWidth))
                 {
@@ -139,17 +142,17 @@ namespace CustomKits.Kits
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            this.BackColorChanged += UserControl_BackColorChanged;
+            this.SizeChanged += ButtonKits_SizeChanged;
         }
 
-        private void UserControl_BackColorChanged(object? sender, EventArgs e)
+        private void ButtonKits_SizeChanged(object? sender, EventArgs e)
         {
-            if (this.DesignMode)
+            if (this.Height <= BorderRadius)
             {
-                this.Fill = true;
-                Invalidate();
+                BorderRadius = this.Height - 1;
             }
         }
+
 
     }
 }

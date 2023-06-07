@@ -47,8 +47,16 @@ namespace CustomKits.Kits
         {
             get => borderRadius; set
             {
-                borderRadius = value;
+                if (value < this.Height)
+                {
+                    borderRadius = value;
+                }
+                else
+                {
+                    borderRadius = this.Height - 1;
+                }
                 Invalidate();
+
             }
         }
 
@@ -85,5 +93,20 @@ namespace CustomKits.Kits
             }
 
         }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            this.SizeChanged += ButtonKits_SizeChanged;
+        }
+
+        private void ButtonKits_SizeChanged(object? sender, EventArgs e)
+        {
+            if (this.Height <= BorderRadius)
+            {
+                BorderRadius = this.Height - 1;
+            }
+        }
+
     }
 }

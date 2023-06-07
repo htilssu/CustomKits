@@ -32,10 +32,11 @@
             // 
             // UserControlKits
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "UserControlKits";
-            Size = new Size(512, 62);
+            Size = new Size(410, 48);
             ResumeLayout(false);
         }
 

@@ -12,6 +12,7 @@ namespace CustomKits.Kits
         bool fill;
         Color borderColor;
         Color hoverColor;
+        Color originalColor;
 
         [Category("Hisu")]
         public float BorderWidth
@@ -36,11 +37,15 @@ namespace CustomKits.Kits
         {
             get => borderRadius; set
             {
-                if (value < this.Width)
+                if (value < this.Height)
                 {
                     borderRadius = value;
-                    Invalidate();
                 }
+                else
+                {
+                    borderRadius = this.Height - 1;
+                }
+                Invalidate();
 
             }
         }
@@ -95,7 +100,7 @@ namespace CustomKits.Kits
         }
 
 
-
+        //Override Medthod
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
@@ -136,6 +141,26 @@ namespace CustomKits.Kits
         {
             base.OnHandleCreated(e);
             this.BackColorChanged += ButtonKits_BackColorChanged;
+            this.SizeChanged += ButtonKits_SizeChanged;
+        }
+
+        protected override void OnMouseHover(EventArgs e)
+        {
+            originalColor = this.BackColor;
+            BackColor = HoverColor;
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            BackColor = originalColor;
+        }
+
+        private void ButtonKits_SizeChanged(object? sender, EventArgs e)
+        {
+            if (this.Height <= BorderRadius)
+            {
+                BorderRadius = this.Height - 1;
+            }
         }
 
         private void ButtonKits_BackColorChanged(object? sender, EventArgs e)
@@ -147,5 +172,7 @@ namespace CustomKits.Kits
             }
         }
 
+
+        
     }
 }
